@@ -1,8 +1,7 @@
 const noteText = document.querySelector("#noteText")
-const notesList = document.querySelector("notesList")
-
-
-
+const notesList = document.querySelector("#notesList")
+const saveBtn = document.querySelector("#saveButton")
+const deleteBtn = document.querySelector("#deleteNote")
 
 const saveNote = async() =>{
  if(!noteText.value) return;
@@ -42,3 +41,6 @@ const deleteNote = async(index) =>{
         console.error("feil ved sletting av notat", error)
     }
 }
+
+saveBtn.addEventListener("click", saveNote)
+deleteBtn.addEventListener("click", deleteNote)
