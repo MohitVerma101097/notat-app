@@ -1,14 +1,14 @@
 const noteText = document.querySelector("#noteText")
 const notesList = document.querySelector("#notesList")
 const saveBtn = document.querySelector("#saveButton")
-const deleteBtn = document.querySelector("#deleteNote")
+
 
 const saveNote = async() =>{
  if(!noteText.value) return;
 
  try {
     const exsistingNotes = JSON.parse(localStorage.getItem("notes")) || [];
-    exsistingNotes.push(noteText)
+    exsistingNotes.push(noteText.value)
     localStorage.setItem("notes", JSON.stringify(exsistingNotes))
     await displayNotes()
  } catch (error){
@@ -16,18 +16,23 @@ const saveNote = async() =>{
  }
 }
 
-const displayNotes = async() => {
+const displayNotes = async () => {
     const exsistingNotes = JSON.parse(localStorage.getItem("notes")) || [];
     notesList.innerHTML = "";
-    for(let i = 0; i < exsistingNotes.length; i++){
+    for (let i = 0; i < exsistingNotes.length; i++) {
         const noteElement = document.createElement("div");
         noteElement.innerHTML = `
-        <p><strong>Notat #${i + 1}</strong></p>
-        <p>${exsistingNotes[i]}</p>
-        <button id="deleteNote">Slett Notat</button>`
-    notesList.appendChild(noteElement)
+            <p><strong>Notat #${i + 1}</strong></p>
+            <p>${exsistingNotes[i]}</p>
+            <button class="deleteNote">Slett Notat</button>`;
+        const index = i;
+        const deleteBtn = noteElement.querySelector(".deleteNote");
+        deleteBtn.addEventListener("click", () => {
+            deleteNote(index);
+        });
+        notesList.appendChild(noteElement);
     }
-}
+};
 
 const deleteNote = async(index) =>{
     try {
@@ -43,4 +48,3 @@ const deleteNote = async(index) =>{
 }
 
 saveBtn.addEventListener("click", saveNote)
-deleteBtn.addEventListener("click", deleteNote)
