@@ -1,23 +1,60 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-container {
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 300px;
+    height: 150px;
+    resize: none;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
 
 .green-note {
-    background-color: #baf5ba; 
-    border: 1px solid #5cb85c; 
+    background-color: #baf5ba;
+    border: 1px solid #5cb85c;
     padding: 10px;
     margin-bottom: 10px;
 }
-
 
 .orange-note {
-    background-color: #ffe6b3; 
-    border: 1px solid #ffc966; 
+    background-color: #ffe6b3;
+    border: 1px solid #ffc966;
     padding: 10px;
     margin-bottom: 10px;
 }
-
 
 #notesList {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; 
 }
