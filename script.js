@@ -25,14 +25,20 @@ const displayNotes = async () => {
             <p><strong>Notat #${i + 1}</strong></p>
             <p>${exsistingNotes[i]}</p>
             <button class="deleteNote">Slett Notat</button>`;
-        const index = i;
+        if (i % 2 === 0) {
+            noteElement.classList.add("green-note");
+        } else {
+            noteElement.classList.add("orange-note");
+        }
         const deleteBtn = noteElement.querySelector(".deleteNote");
+        const index = i;
         deleteBtn.addEventListener("click", () => {
             deleteNote(index);
         });
         notesList.appendChild(noteElement);
     }
 };
+
 
 const deleteNote = async(index) =>{
     try {
